@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{8CC46E26-065D-4941-A6CD-631E880002AD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MotorControllerTest/Motor.cs">
+    <Files>
+      <File FileName="MotorControllerTest/MotorController.cs" Line="142" Column="33" />
+      <File FileName="MotorControllerTest/Program.cs" Line="81" Column="18" />
+      <File FileName="MotorControllerTest/Modbus.cs" Line="158" Column="27" />
+      <File FileName="MotorControllerTest/LateralMotor.cs" Line="18" Column="25" />
+      <File FileName="MotorControllerTest/VerticalMotor.cs" Line="118" Column="34" />
+      <File FileName="MotorControllerTest/SpindleMotor.cs" Line="17" Column="10" />
+      <File FileName="MotorControllerTest/TransverseMotor.cs" Line="22" Column="6" />
+      <File FileName="MotorControllerTest/Motor.cs" Line="80" Column="29" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MotorControllerTest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

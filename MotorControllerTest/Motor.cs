@@ -9,13 +9,13 @@ namespace MotorControllerTest
         internal Modbus Mbus;
         internal int Address;
 
-        //protected Motor(MotorController motorController, MotorState state, int address)
-        //{
-        //    Controller = motorController;
-        //    State = state;
-        //    Mbus = Controller.modbus;
-        //    Address = address;
-        //}
+        internal Motor(MotorController motorController, MotorState state, int address)
+        {
+            Controller = motorController;
+            State = state;
+            Mbus = Controller.modbus;
+            Address = address;
+        }
 
         internal void Connect()
         {

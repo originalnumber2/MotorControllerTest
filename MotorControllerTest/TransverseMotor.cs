@@ -10,14 +10,10 @@ namespace MotorControllerTest
         //internal Modbus Mbus;
 
 
-        public TransverseMotor(MotorController motorController)
+        public TransverseMotor(MotorController motorController) :
+        base(motorController, motorController.TransverseMotorState, 2)
         {
-            //inherats this from parent
-            Controller = motorController;
-            State = Controller.TransverseMotorState;
-            Mbus = Controller.modbus;
-            Address = 2;
-           
-    }
+
+        }
     }
 }

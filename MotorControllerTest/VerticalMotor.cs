@@ -22,9 +22,9 @@ namespace MotorControllerTest
 
 
 
-        public VerticalMotor(MotorController controller)
+        public VerticalMotor(MotorController controller) :
+            base(controller, controller.VerticleMotorState, 4)
         {
-
             //need to do something about the modbus UDP problem and bring together
             isVerContinous = true;
             VerCount = 0; //Number of rotations to preform

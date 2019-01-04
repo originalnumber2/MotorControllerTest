@@ -8,12 +8,9 @@ namespace MotorControllerTest
 
         //Spindle direction true - Clockwise false - counter clockwise
 
-        public SpindleMotor(MotorController motorController)
+        public SpindleMotor(MotorController motorController) :
+            base(motorController, motorController.SpindleMotorState, 1)
         {
-            Controller = motorController;
-            State = Controller.SpindleMotorState;
-            Mbus = Controller.modbus;
-            Address = 1;
         }
 
 

@@ -64,6 +64,7 @@ public class MotorController
             while (!isConnected)
             {
                 lateralMotor.Connect();
+                Thread.Sleep(3000);
                 transverseMotor.Connect();
                 verticalMotor.Connect();
                 spindleMotor.Connect();

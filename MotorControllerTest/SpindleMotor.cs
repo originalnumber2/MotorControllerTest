@@ -14,7 +14,7 @@ namespace MotorControllerTest
         }
 
 
-        private new void Connect()
+        internal new void Connect()
         {
             //attempt to sync with motor
             //int speed = (int)((double)nmSpiRPM.Value * 2.122);
@@ -41,6 +41,7 @@ namespace MotorControllerTest
             if (State.IsCon)
             {
                 Mbus.WriteModbusQueue(1, 2000, 1, false);
+                State.IsMoving = true;
             }
         }
 
@@ -49,6 +50,7 @@ namespace MotorControllerTest
             if (State.IsCon)
             {
                 Mbus.WriteModbusQueue(1, 2000, 1, false);
+                State.IsMoving = true;
             }
         }
 

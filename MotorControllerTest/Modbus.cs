@@ -29,13 +29,13 @@ namespace MotorControllerTest
             }
             catch (System.IO.IOException e)
             {
-                //MessageBox.Show("Open device manager in windows and the 'Setup Serial Ports' section of the C# code and check the serial port names and settings are correct\n\n" + e.ToString(), "Serial Port Error");
+                Console.WriteLine("Open device manager in windows and the 'Setup Serial Ports' section of the C# code and check the serial port names and settings are correct\n\n" + e.ToString(), "Serial Port Error");
                 Process.GetCurrentProcess().Kill();
 
             }
             catch (System.UnauthorizedAccessException e)
             {
-                //MessageBox.Show("Something is wrong? maybe try to restart computer?\n\nHere is some error message stuff...\n\n" + e.ToString(), "Serial Port Error");
+                Console.WriteLine("Something is wrong? maybe try to restart computer?\n\nHere is some error message stuff...\n\n" + e.ToString(), "Serial Port Error");
                 Process.GetCurrentProcess().Kill();
             }
             //Start the Modbus Writer thread
@@ -56,7 +56,7 @@ namespace MotorControllerTest
                 try { ModBusQueueMutex.Release(); }
                 catch (System.Threading.SemaphoreFullException ex)
                 {
-                    //MessageBox.Show("error releasing ModBusQueueMutex 3 " + ex.Message.ToString());
+                    Console.WriteLine("error releasing ModBusQueueMutex 3 " + ex.Message.ToString());
                 }
                 ModbusPort.Write(RSMessage, 0, 8);
 
@@ -131,14 +131,14 @@ namespace MotorControllerTest
                 try { ModBusQueueMutex.Release(); }
                 catch (System.Threading.SemaphoreFullException ex)
                 {
-                    //MessageBox.Show("error releasing ModBusQueueMutex 4 " + ex.Message.ToString());
+                    Console.WriteLine("error releasing ModBusQueueMutex 4 " + ex.Message.ToString());
                 }
 
                 //tell other thread message is available
                 try { ModBusQueueSemaphore.Release(1); }
                 catch (System.Threading.SemaphoreFullException ex)
                 {
-                    //MessageBox.Show("error releasing ModBusQueueSemaphore 3 " + ex.Message.ToString());
+                    Console.WriteLine("error releasing ModBusQueueSemaphore 3 " + ex.Message.ToString());
                 }
             }
 
@@ -155,14 +155,14 @@ namespace MotorControllerTest
                     {
                         //Check to see if the requested motor that responded matches the right motor
                         ModbusPort.Read(Returned, 0, ModbusPort.BytesToRead);
-                        //WriteMessageQueue(BitConverter.ToString(Returned));
+                        Console.WriteLine(BitConverter.ToString(Returned));
                         motorreturned = Returned[0];
                         if (motor == motorreturned)
                         {
                             try { ModBusQueueMutex.Release(); }
                             catch (System.Threading.SemaphoreFullException ex)
                             {
-                                //MessageBox.Show("error releasing ModBusQueueMutex 5 " + ex.Message.ToString());
+                                Console.WriteLine("error releasing ModBusQueueMutex 5 " + ex.Message.ToString());
                             }
                             return true;
                         }
@@ -172,7 +172,7 @@ namespace MotorControllerTest
                 try { ModBusQueueMutex.Release(); }
                 catch (System.Threading.SemaphoreFullException ex)
                 {
-                    //MessageBox.Show("error releasing ModBusQueueMutex 6 " + ex.Message.ToString());
+                    Console.WriteLine("error releasing ModBusQueueMutex 6 " + ex.Message.ToString());
                 }
                 return false;
             }

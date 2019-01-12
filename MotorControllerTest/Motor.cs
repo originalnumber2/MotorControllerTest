@@ -86,6 +86,7 @@ namespace MotorControllerTest
             else
             {
                 Mbus.WriteModbusQueue(Address, 0x0706, 0x22, false);
+                State.IsMoving = true;
             }
         }
 
@@ -99,6 +100,7 @@ namespace MotorControllerTest
             else
             {
                 Mbus.WriteModbusQueue(Address, 0x0706, 0x12, false);
+                State.IsMoving = true;
             }
         }
 
@@ -113,6 +115,7 @@ namespace MotorControllerTest
             if (State.IsMoving)
             {
                 Hault();
+                State.IsMoving = false;
             }
         }
 

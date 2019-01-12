@@ -151,6 +151,7 @@ namespace MotorControllerTest
             }
 
             VerPort.Write(VerMessage);
+            State.IsMoving = true;
         }
 
         //Lowers the table
@@ -173,10 +174,11 @@ namespace MotorControllerTest
             }
 
             VerPort.Write(VerMessage);
+            State.IsMoving = true;
         }
 
 
-        public void Hault() // Used with the stop verticle button I dont know what the E does
+        public new void Hault() // Used with the stop verticle button I dont know what the E does
         {
             VerPort.Write("E S\r");
         }

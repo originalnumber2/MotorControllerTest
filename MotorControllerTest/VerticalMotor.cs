@@ -177,6 +177,16 @@ namespace MotorControllerTest
             State.IsMoving = true;
         }
 
+        //Sends the command stop the motor if it is moving. Prevents spamming of the modbus
+        public new void Stop()
+        {
+            if (State.IsMoving)
+            {
+                Hault();
+                State.IsMoving = false;
+                State.Speed = 0;
+            }
+        }
 
         public new void Hault() // Used with the stop verticle button I dont know what the E does
         {

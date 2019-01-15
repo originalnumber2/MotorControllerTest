@@ -36,6 +36,35 @@ namespace MotorControllerTest
             State.IsCon = false;
         }
 
+        //do not need if i can find out how to not use the motor version of MoveModbus
+        public new void Move(double velocity, double scale)
+        {
+            if (State.IsSimulinkControl)
+            {
+                MoveSimulink();
+            }
+            MoveModbus(velocity, scale);
+        }
+
+        //This function moves the Lateral Motor checking for direction and speed changes
+        internal new void MoveModbus(double velocity, double scale)
+        {
+            bool change, dir;
+            double speed;
+            (change, dir, speed) = State.ChangeVelocity(velocity);
+            if (change)
+            {
+                //old pulley speed
+                // int speed = (int)((double)nmSpiRPM.Value * 1.58);
+                // int speed = (int)(RPM * 2.122);
+                //int speed = (int)(RPM * 3.7022); //Adjusted by BG and CC 9/7/12
+                Mbus.WriteModbusQueue(1, 2002, (int)(speed * 3.772), false);
+                if (dir) { MovePosModbus(); }
+                else MoveNegModbus();
+            }
+
+        }
+
         private void MovePosModbus()
         {
             if (State.IsCon)
@@ -49,8 +78,20 @@ namespace MotorControllerTest
         {
             if (State.IsCon)
             {
-                Mbus.WriteModbusQueue(1, 2000, 1, false);
+                Mbus.WriteModbusQueue(1, 2000, 3, false);
                 State.IsMoving = true;
+            }
+        }
+
+        //Sends the command stop the motor if it is moving. Prevents spamming of the modbus
+        //dont need if i can find out how to not use the motor version of hault
+        public new void Stop()
+        {
+            if (State.IsMoving)
+            {
+                Hault();
+                State.IsMoving = false;
+                State.Speed = 0;
             }
         }
 
@@ -58,7 +99,6 @@ namespace MotorControllerTest
         {
             //Stop the spindle
             Mbus.WriteModbusQueue(1, 2000, 0, false);
-            State.IsMoving = false;
         }
 
         //private bool ChangeDir(bool dir)

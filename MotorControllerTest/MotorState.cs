@@ -90,12 +90,12 @@ namespace MotorControllerTest
         //this function check if the direction of the lateral motor changes. changes it if required. Returns true if so.
         private (bool, bool) ChangeDir(bool dir)
         {
-            if (dir = Dir)
+            if (dir == Dir)
             {
                 return (false, Dir);
             }
             Dir = dir;
-            return (true, Dir);
+            return (true, dir);
         }
     }
 }

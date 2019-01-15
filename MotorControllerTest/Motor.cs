@@ -116,6 +116,7 @@ namespace MotorControllerTest
             {
                 Hault();
                 State.IsMoving = false;
+                State.Speed = 0;
             }
         }
 
@@ -123,7 +124,6 @@ namespace MotorControllerTest
         internal void Hault()
         {
             Mbus.WriteModbusQueue(Address, 0x0706, 1, false);
-            State.SetCon(false);
         }
     }
 }

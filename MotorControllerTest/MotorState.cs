@@ -84,7 +84,7 @@ namespace MotorControllerTest
                 Speed = CheckSpeed;
                 return (true, Speed);
             }
-            return (false, 0);
+            return (false, Speed);
         }
 
         //this function check if the direction of the lateral motor changes. changes it if required. Returns true if so.
